@@ -16,7 +16,7 @@ with the following content
 org.openhab.husqvarnaam:enableAutoDiscovery=false
 ```
 
-##Thing configuration
+## Thing configuration
 
 In the things folder, create a file called husqvarna.things (or any other name) and configure your AM inside.
 
@@ -106,13 +106,13 @@ log:set DEBUG org.openhab.binding.husqvarnaam
 
 ## Full example
 
-*demo.Things:
+* demo.Things:
 
 ```
 husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001", pollingIntervalInSec=60, expertMode=false ]
 ```
 
-*demo.items:
+* demo.items:
 
 ```
 Group gHusqvarna <am> (All)
@@ -250,7 +250,7 @@ The AM returns its state information (channel 'displayInformation#currentState')
 NULL=unknown (NULL)
 ```
 
-*demo.rules
+* demo.rules
 
 ```
 import java.util.concurrent.locks.ReentrantLock
@@ -613,7 +613,7 @@ then
 end
 ```
 
-*demo.sitemap:
+* demo.sitemap:
 
 ```
 sitemap husqvarna label="Husqvarna Menu"
@@ -721,6 +721,6 @@ sitemap husqvarna label="Husqvarna Menu"
 ```
 
 
-References
+## ferences
 [1] An open source project is https://homematic-forum.de/forum/viewtopic.php?f=31&t=7295
 [2] A commercial provider is http://www.pritschet.eu/WIFI-Control/
