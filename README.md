@@ -107,7 +107,7 @@ log:set DEBUG org.openhab.binding.husqvarnaam
 
 ## Full example
 
-* demo.Things:
+* demo.things:
 
 ```
 husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001", pollingIntervalInSec=60, expertMode=false ]
@@ -617,7 +617,7 @@ end
 * demo.sitemap:
 
 ```
-sitemap husqvarna label="Husqvarna Menu"
+sitemap demo label="Husqvarna Menu"
 {
 	Frame label="Husqvarna AM" {
 	
