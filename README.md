@@ -721,6 +721,6 @@ sitemap husqvarna label="Husqvarna Menu"
 ```
 
 
-## ferences
-[1] An open source project is https://homematic-forum.de/forum/viewtopic.php?f=31&t=7295
-[2] A commercial provider is http://www.pritschet.eu/WIFI-Control/
+## References
+\[1\] An open source project is https://homematic-forum.de/forum/viewtopic.php?f=31&t=7295
+\[2\] A commercial provider is http://www.pritschet.eu/WIFI-Control/
