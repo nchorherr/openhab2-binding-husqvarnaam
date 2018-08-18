@@ -82,6 +82,7 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
 Mode of the AM and the Timers can be set, all other information is readonly. All information in channel group "details" is experimental,
 due to the lack of an official specification of the husqvarna protocol the interpretation of the values is sometimes unclear. Most information is
 extracted from [1].
+
 Timer of day: each day of week is represented as a special bit in a 7 bit value
 <table>
     <tr><td><b>Day of week</b></td><td><b>Value</b></td><td><b>bit value</b></td></tr>
@@ -723,4 +724,5 @@ sitemap husqvarna label="Husqvarna Menu"
 
 ## References
 \[1\] An open source project is https://homematic-forum.de/forum/viewtopic.php?f=31&t=7295
+
 \[2\] A commercial provider is http://www.pritschet.eu/WIFI-Control/
