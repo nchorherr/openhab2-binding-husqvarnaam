@@ -1,1 +1,6 @@
 /target
+/build.properties.OLD
+/.classpath
+/.factorypath
+/.project
+/TODO.txt

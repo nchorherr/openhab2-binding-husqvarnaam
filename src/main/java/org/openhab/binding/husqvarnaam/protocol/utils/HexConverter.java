@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.husqvarnaam.protocol.utils;
 
@@ -12,6 +16,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Formatter;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.openhab.binding.husqvarnaam.protocol.AmCommand;
 
 /**
@@ -21,6 +26,7 @@ import org.openhab.binding.husqvarnaam.protocol.AmCommand;
  * @author Nikolaus Chorherr - Initial contribution
  *
  */
+@NonNullByDefault
 public class HexConverter {
 
     public static String toString(byte[] hexCode) {
@@ -32,7 +38,9 @@ public class HexConverter {
             f.format("0x%02X,", hexCode[i]);
         }
         f.format("0x%02X", hexCode[hexCode.length - 1]);
-        return f.toString();
+        String ret=f.toString();
+        f.close();
+        return ret;
     }
 
     public static int convertAsUnsignedBytes(byte[] hexCode) {

@@ -1,18 +1,25 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.husqvarnaam;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 
-import com.google.common.collect.ImmutableSet;
 
 /**
  * The {@link HusqvarnaAmBinding} class defines common constants, which are used
@@ -20,12 +27,12 @@ import com.google.common.collect.ImmutableSet;
  *
  * @author Nikolaus Chorherr - Initial contribution
  */
+@NonNullByDefault
 public class HusqvarnaAmBindingConstants {
 
     public static final String BINDING_ID = "husqvarnaam";
 
-    public static final Set<String> SUPPORTED_DEVICE_MODELS = ImmutableSet
-            .of("220", "230X");
+    public static final Set<String> SUPPORTED_DEVICE_MODELS = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("220", "230X")));
 
     // List of all Thing Type UIDs
     public static final ThingTypeUID IP_AM_THING_TYPE = new ThingTypeUID(
@@ -123,8 +130,8 @@ public class HusqvarnaAmBindingConstants {
     // TODO do we need/use this
     public static final String UPNP_DEVICE_TYPE = "Automower";
 
-    public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = ImmutableSet
-            .of(IP_AM_THING_TYPE);
+    public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = 
+            Collections.unmodifiableSet(new HashSet<>(Arrays.asList(IP_AM_THING_TYPE)));
 
     // Mode types
     public static final String MODE_MAN = "0";

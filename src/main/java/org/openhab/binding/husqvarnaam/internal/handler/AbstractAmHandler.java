@@ -1,13 +1,19 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.husqvarnaam.internal.handler;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -32,9 +38,9 @@ import org.openhab.binding.husqvarnaam.protocol.event.AmDisconnectionEvent;
 import org.openhab.binding.husqvarnaam.protocol.event.AmDisconnectionListener;
 import org.openhab.binding.husqvarnaam.protocol.event.AmStatusUpdateEvent;
 import org.openhab.binding.husqvarnaam.protocol.event.AmUpdateListener;
+import org.openhab.binding.husqvarnaam.protocol.utils.AmInformationConverter;
 import org.openhab.binding.husqvarnaam.protocol.utils.DateTimeConverter;
 import org.openhab.binding.husqvarnaam.protocol.utils.HexConverter;
-import org.openhab.binding.husqvarnaam.protocol.utils.AmInformationConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +66,7 @@ public abstract class AbstractAmHandler extends BaseThingHandler
 
     private Boolean expertMode;
 
-    private static final Long SLEEP_BETWEEN_STATUS_QUERIES_INMS = 1000L;
+//    private static final Long SLEEP_BETWEEN_STATUS_QUERIES_INMS = 1000L;
 
     public AbstractAmHandler(Thing thing) {
         super(thing);
@@ -142,11 +148,11 @@ public abstract class AbstractAmHandler extends BaseThingHandler
     /*
      * sets all data initially Timers, timerflags
      */
-    private void doInitialization() {
-        // Timers
-        connection.sendTimerActiveQuery();
-        connection.sendTimerQuery();
-    }
+//    private void doInitialization() {
+//        // Timers
+//        connection.sendTimerActiveQuery();
+//        connection.sendTimerQuery();
+//    }
 
     public void onStartup() {
         connection.sendStatusQuery();
@@ -530,7 +536,7 @@ public abstract class AbstractAmHandler extends BaseThingHandler
         // wait until fully set
         if (this.isCalendarFullySet()) {
             updateState(HusqvarnaAmBindingConstants.CURRENT_DATETIME_CHANNEL,
-                    new DateTimeType(currentAmDateTime));
+                    new DateTimeType(ZonedDateTime.ofInstant(currentAmDateTime.toInstant(), ZoneId.systemDefault())));
         }
     }
 

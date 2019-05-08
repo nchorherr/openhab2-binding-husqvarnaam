@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.husqvarnaam.internal.discovery;
 
@@ -16,7 +20,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
 import org.eclipse.smarthome.config.discovery.DiscoveryResultBuilder;
-import org.eclipse.smarthome.config.discovery.UpnpDiscoveryParticipant;
+import org.eclipse.smarthome.config.discovery.upnp.UpnpDiscoveryParticipant;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.ThingUID;
 import org.jupnp.model.meta.RemoteDevice;
@@ -24,8 +28,6 @@ import org.openhab.binding.husqvarnaam.HusqvarnaAmBindingConstants;
 import org.osgi.service.component.ComponentContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.Collections2;
 
 /**
  * An UpnpDiscoveryParticipant which allows to discover Husqvarna AMs. 
@@ -144,15 +146,9 @@ public class HusqvarnaAmDiscoveryParticipant
      * @return
      */
     private boolean isSupportedDeviceModel(final String deviceModel) {
-        return StringUtils.isNotBlank(deviceModel) && !Collections2
-                .filter(HusqvarnaAmBindingConstants.SUPPORTED_DEVICE_MODELS,
-                        new com.google.common.base.Predicate<String>() {
-                            @Override
-                            public boolean apply(String input) {
-                                return StringUtils.startsWithIgnoreCase(
-                                        deviceModel, input);
-                            }
-                        })
-                .isEmpty();
+        return StringUtils.isNotBlank(deviceModel) && 
+        !HusqvarnaAmBindingConstants.SUPPORTED_DEVICE_MODELS.stream().filter(d->d.equalsIgnoreCase(deviceModel)).findFirst().orElse("").equals("");
+        
     }
+
 }

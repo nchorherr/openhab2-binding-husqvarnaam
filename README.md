@@ -1,5 +1,6 @@
 # openhab2-binding-husqvarnaam
 
+
 openHAB2 binding for a husqvarna automower AM 220 AC/230ACX.
 
 ## Supported Things
@@ -723,6 +724,7 @@ sitemap demo label="Husqvarna Menu"
 
 
 ## References
+
 \[1\] An open source project is https://homematic-forum.de/forum/viewtopic.php?f=31&t=7295
 
 \[2\] A commercial provider is http://www.pritschet.eu/WIFI-Control/
