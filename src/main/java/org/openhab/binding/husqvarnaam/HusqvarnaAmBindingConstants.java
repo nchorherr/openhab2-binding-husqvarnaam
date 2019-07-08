@@ -63,7 +63,8 @@ public class HusqvarnaAmBindingConstants {
             + "#operationTime";
     public static final String CURRENT_DATETIME_CHANNEL = CHANNEL_GROUP_DISPLAY
             + "#currentDateTime";
-
+    public static final String LATEST_UPDATE_TIME = CHANNEL_GROUP_DISPLAY+"#latestUpdateTime";
+    
     // Timer constants
     public static final String CHANNEL_GROUP_TIMER = "timer";
     public static final String TIMER_ACTIVE_CHANNEL = CHANNEL_GROUP_TIMER

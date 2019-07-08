@@ -32,11 +32,11 @@ public class AmInformationConverter {
      * @return the decimal number as String
      * @throws AmConnectionException
      */
-    public static String convertStateResponse(byte[] responseParameter) {
+    public static Integer convertStateResponse(byte[] responseParameter) {
         if (AmCommand.invalidParameterLength(responseParameter)) {
-            return "invalid State";
+            return Integer.valueOf(-1);
         }
-        return String.valueOf(createDecimalResponse(responseParameter));
+        return Integer.valueOf(createDecimalResponse(responseParameter));
     }
 
     /**
@@ -50,54 +50,55 @@ public class AmInformationConverter {
         return HexConverter.convertAsUnsignedBytes(responseParameter);
     }
 
-    public static String convertOperationTimeMessage(byte[] responseParameter)
+    public static Integer convertOperationTimeMessage(byte[] responseParameter)
             throws AmConnectionException {
-        return String.valueOf(createDecimalResponse(responseParameter));
+        return Integer.valueOf(createDecimalResponse(responseParameter));
     }
 
-    public static String convertMowTimeMessage(byte[] responseParameter)
+    public static Integer convertMowTimeMessage(byte[] responseParameter)
             throws AmConnectionException {
-        return String.valueOf(createDecimalResponse(responseParameter));
+        return Integer.valueOf(createDecimalResponse(responseParameter));
     }
 
-    public static String convertChargeTimeMessage(byte[] responseParameter)
+    public static Integer convertChargeTimeMessage(byte[] responseParameter)
             throws AmConnectionException {
-        return String.valueOf(createDecimalResponse(responseParameter));
+        return Integer.valueOf(createDecimalResponse(responseParameter));
     }
 
-    public static String convertModeMessage(byte[] responseParameter)
+    public static Integer convertModeMessage(byte[] responseParameter)
             throws AmConnectionException {
-        return String.valueOf(createDecimalResponse(responseParameter));
+        return Integer.valueOf(createDecimalResponse(responseParameter));
     }
 
-    public static String convertBatteryCurrentMessage(
+    public static Integer convertBatteryCurrentMessage(
             byte[] responseParameter) {
-        return String
-                .valueOf(HexConverter.convertAsSignedBytes(responseParameter));
+        // TODO Check if OK on display
+        return Integer
+                .valueOf(HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
-    public static String convertBatteryCapacityMAH(byte[] responseParameter) {
-        return String.valueOf(
+    public static Integer convertBatteryCapacityMAH(byte[] responseParameter) {
+        return Integer.valueOf(
                 HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
-    public static String convertBatteryVoltageMV(byte[] responseParameter) {
-        return String.valueOf(
+    public static Integer convertBatteryVoltageMV(byte[] responseParameter) {
+        return Integer.valueOf(
                 HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
-    public static String convertBatteryTemperatureC(byte[] responseParameter) {
-        return String.valueOf(
+    public static Integer convertBatteryTemperatureC(byte[] responseParameter) {
+        return Integer.valueOf(
                 HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
-    public static String convertVelocity(byte[] responseParameter) {
-        return String.valueOf(
+    public static Integer convertVelocity(byte[] responseParameter) {
+        return Integer.valueOf(
                 HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
-    public static String convertPercent(byte[] responseParameter) {
-        return String.valueOf(
+    public static Integer convertPercent(byte[] responseParameter) {
+        return Integer.valueOf(
                 HexConverter.convertAsUnsignedBytes(responseParameter));
     }
 
