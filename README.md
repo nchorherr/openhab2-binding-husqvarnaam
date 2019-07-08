@@ -118,91 +118,77 @@ Group gBasics <none> (gHusqvarna)
 Group gTimers <time-on> (gHusqvarna)
 Group gDetails <none> (gHusqvarna)
 
-Group gTimer1 <time-on> (gTimers)
-Group gTimer2 <time-on>  (gTimers)
-Group gweTimer1 <time-on>  (gTimers)
-Group gweTimer2 <time-on>  (gTimers)
-Group gWeekdays <none> (gTimers)
-
-Group gTimer1Start <time-on>  (gTimer1)
-Group gTimer1Stop <time-on>  (gTimer1)
-Group gTimer2Start <time-on>  (gTimer2)
-Group gTimer2Stop <time-on>  (gTimer2)
-Group gweTimer1Start <time-on>  (gweTimer1)
-Group gweTimer1Stop <time-on>  (gweTimer1)
-Group gweTimer2Start <time-on>  (gweTimer2)
-Group gweTimer2Stop <time-on>  (gweTimer2)
+Group gTimer1 "Timer 1" <time-on> (gTimers)
+Group gTimer2 "Timer 2" <time-on>  (gTimers)
+Group gweTimer1 "Woe Timer 1" <time-on>  (gTimers)
+Group gweTimer2 "Woe Timer 2" <time-on>  (gTimers)
+Group gWeekdays "Wochentage" <none> (gTimers)
 
 /* Husqvarna AM Items */
 /* Basic information */
-String am230StateInformation	"State [MAP(husqvarnaStatusCode.map):%s]"			<none>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#currentState" }
-String am230MowTimeInformation	"Mow time [%s min]"			<none>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#mowTime" }
-String am230ChargeTimeInformation	"Charge time [%s min]"			<none>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#chargeTime" }
-String am230OperationTimeInformation	"Operation time [%s h]"			<none>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#operationTime" }
-DateTime am230CurrentMowerDateTime	"Current Date [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"			<calendar>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#currentDateTime" }
-String am230ModeSet				"Mode"					<none>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#mode"}
+String am230StateInformation	"Aktueller Status [MAP(husqvarnaStatusCode_de.map):%s]"			<am>		(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#currentState" }
+Number:Time am230MowTimeInformation	"Mähzeit [%.1f %unit%]"	<time>	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#mowTime" }
+Number:Time am230ChargeTimeInformation	"Ladezeit [%.1f %unit%]"	<time>	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#chargeTime" }
+Number:Time am230OperationTimeInformation	"Gesamtbetriebszeit [%.1f %unit%]"	<time>	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#operationTime" }
+DateTime am230CurrentMowerDateTime	"Aktuelles Datum am AM [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"	<calendar>	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#currentDateTime" }
+String am230ModeSet	"Modus"	<none>	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#mode"}
+Switch am230ExpertMode  "Expertenmodus" <none> 	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#expertMode"}
+DateTime am230LatestUpdateTime  "Letzte Aktualisierung [%1$tA, %1$td.%1$tm.%1$tY %1$tT]" <time> 	(gBasics)	{ channel="husqvarnaam:ipAm:am230:displayInformation#latestUpdateTime"}
+
 /* details (expert mode) */
-String am230batteryCapacityUsedMaH "Battery capacity used [%s mAh]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacityUsedMaH" }
-String am230rectangleModeState "Rectangle mode state [%s]"			<none>		(gDetails) {channel="husqvarnaam:ipAm:am230:details#rectangleModeState" }
-String am230rectangleModePercent "Rectangle mode [%s %%]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#rectangleModePercent" }
-String am230rectangleModeReference "Rectangle mode Reference [%s]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#rectangleModeReference" }
-String am230batteryCurrentMa "Battery current [%s mA]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCurrentMa" }
-String am230batteryCapacityMaH "Battery capacity [%s mAh]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacityMaH" }
-String am230batteryCapacitySearchStartMaH "Battery capacity Search start [%s mAh]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacitySearchStartMaH" }
-String am230batteryVoltage "Battery voltage [%s mV]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryVoltage" }
-String am230batteryTemperature "Battery temperature [%s °C]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryTemperature" }
-String am230batteryTemperatureCharge "Battery temperature charged [%s °C]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryTemperatureCharge" }
-String am230batteryLatestChargeMin "Battery latest charge [%s min]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryLatestChargeMin" }
-String am230batteryNextTemperatureMeasurementSec "Next Battery temperature measurement[%s sec]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryNextTemperatureMeasurementSec" }
-String am230bladeVelocityMotor "Blade velocity motor [%s rpm]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityMotor" }
-String am230velocityLeft "Velocity left wheel [%s cm/s]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityLeft" }
-String am230velocityRight "Velocity right wheel [%s cm/s]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityRight" }
-String am230firmwareVersion "Firmware Version [%s]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#firmwareVersion" }
-String am230languageFileVersion "Language file Version [%s]"			<none>		(gDetails)  {channel="husqvarnaam:ipAm:am230:details#languageFileVersion" }
+String am230rectangleModeState "Rectangle mode state [%s]"		<none>	(gDetails) {channel="husqvarnaam:ipAm:am230:details#rectangleModeState" }
+Number:Dimensionless am230rectangleModePercent "Rectangle mode [%.1f %unit%]"		<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#rectangleModePercent" }
+String am230rectangleModeReference "Rectangle mode Reference [%s]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#rectangleModeReference" }
+Number:Energy am230batteryCapacityUsedMaH "Battery capacity used [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacityUsedMaH" }
+Number:ElectricCurrent am230batteryCurrentMa "Battery current [%.1f %unit%]"			<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCurrentMa" }
+Number:Energy am230batteryCapacityMaH "Battery capacity [%.1f %unit%]"		<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacityMaH" }
+Number:Energy am230batteryCapacitySearchStartMaH "Battery capacity Search start [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryCapacitySearchStartMaH" }
+Number:ElectricPotential am230batteryVoltage "Battery voltage [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryVoltage" }
+Number:Temperature am230batteryTemperature "Battery temperature [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryTemperature" }
+Number:Temperature am230batteryTemperatureCharge "Battery temperature charged [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryTemperatureCharge" }
+Number:Time am230batteryLatestChargeMin "Battery latest charge [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryLatestChargeMin" }
+String am230batteryNextTemperatureMeasurementSec "Next Battery temperature measurement[%s sec]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#batteryNextTemperatureMeasurementSec" }
+Number am230bladeVelocityMotor "Blade velocity motor [%s rpm]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityMotor" }
+Number:Speed am230velocityLeft "Velocity left wheel [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityLeft" }
+Number:Speed am230velocityRight "Velocity right wheel [%.1f %unit%]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#velocityRight" }
+String am230firmwareVersion "Firmware Version [%s]"		<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#firmwareVersion" }
+String am230languageFileVersion "Language file Version [%s]"	<none>	(gDetails)  {channel="husqvarnaam:ipAm:am230:details#languageFileVersion" }
 
 /* Timers: the mapping between channel(DateTime) and GUI-Items must be done in "rules" */ 
-Number am230Timer1StartHour "Stunde [%d]" <none>	(gTimer1Start)
-Number am230Timer1StartMinute "Minute [%d]" <none>	(gTimer1Start)
-DateTime am230Timer1Start "Timer1 Start [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#timer1Start"}
+DateTime am230Timer1Start "Timer1 Start [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#timer1Start"}
+Number am230Timer1StartUi "Start" <clock>	(gTimer1)
 
-Number am230Timer1StopHour "Stunde [%d]" <none>	(gTimer1Stop)
-Number am230Timer1StopMinute "Minute [%d]" <none>	(gTimer1Stop)
-DateTime am230Timer1Stop "Timer1 Stop [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#timer1Stop"}
+DateTime am230Timer1Stop "Timer1 Stop [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#timer1Stop"}
+Number am230Timer1StopUi "Stop" <clock>	(gTimer1)
 
-Number am230Timer2StartHour "Stunde [%d]" <none>	(gTimer2Start)
-Number am230Timer2StartMinute "Minute [%d]" <none>	(gTimer2Start)
-DateTime am230Timer2Start "Timer2 Start [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#timer2Start"}
+DateTime am230Timer2Start "Timer2 Start [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#timer2Start"}
+Number am230Timer2StartUi "Start" <clock>	(gTimer2)
 
-Number am230Timer2StopHour "Stunde [%d]" <none>	(gTimer2Stop)
-Number am230Timer2StopMinute "Minute [%d]" <none>	(gTimer2Stop)
-DateTime am230Timer2Stop "Timer2 Stop [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#timer2Stop"}
+DateTime am230Timer2Stop "Timer2 Stop [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#timer2Stop"}
+Number am230Timer2StopUi "Stop" <clock>	(gTimer2)
 
-Number am230WeTimer1StartHour "Stunde [%d]" <none>	(gweTimer1Start)
-Number am230WeTimer1StartMinute "Minute [%d]" <none>	(gweTimer1Start)
-DateTime am230WeTimer1Start "WeTimer1 Start [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#weTimer1Start"}
+DateTime am230WeTimer1Start "WeTimer1 Start [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#weTimer1Start"}
+Number am230WeTimer1StartUi "Start" <clock>	(gweTimer1)
 
-Number am230WeTimer1StopHour "Stunde [%d]" <none>	(gweTimer1Stop)
-Number am230WeTimer1StopMinute "Minute [%d]" <none>	(gweTimer1Stop)
-DateTime am230WeTimer1Stop "WeTimer1 Stop [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#weTimer1Stop"}
+DateTime am230WeTimer1Stop "WeTimer1 Stop [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#weTimer1Stop"}
+Number am230WeTimer1StopUi "Stop" <clock>	(gweTimer1)
 
-Number am230WeTimer2StartHour "Stunde [%d]" <none>	(gweTimer2Start)
-Number am230WeTimer2StartMinute "Minute [%d]" <none>	(gweTimer2Start)
-DateTime am230WeTimer2Start "WeTimer2 Start [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#weTimer2Start"}
+DateTime am230WeTimer2Start "WeTimer2 Start [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#weTimer2Start"}
+Number am230WeTimer2StartUi "Start" <clock>	(gweTimer2)
 
-Number am230WeTimer2StopHour "Stunde [%d]" <none>	(gweTimer2Stop)
-Number am230WeTimer2StopMinute "Minute [%d]" <none>	(gweTimer2Stop)
-DateTime am230WeTimer2Stop "WeTimer2 Stop [%1$tR]" { channel="husqvarnaam:ipAm:am230:timer#weTimer2Stop"}
+DateTime am230WeTimer2Stop "WeTimer2 Stop [%1$tR]" <time> { channel="husqvarnaam:ipAm:am230:timer#weTimer2Stop"}
+Number am230WeTimer2StopUi "Stop" <clock>	(gweTimer2)
 
-Switch am230TimerActive "Timer active"	(gTimers) {channel="husqvarnaam:ipAm:am230:timer#timerActiveMode" }
+Switch am230TimerActive "Timer active" 	(gTimers) {channel="husqvarnaam:ipAm:am230:timer#timerActiveMode" }
 
-Switch am230timerMonday	"Monday" (gWeekdays)
-Switch am230timerTuesday "Tuesday" (gWeekdays)
-Switch am230timerWednesday	"Wednesday" (gWeekdays)
-Switch am230timerThursday	"Thursday" (gWeekdays)
-Switch am230timerFriday	"Friday" (gWeekdays)
-Switch am230timerSaturday	"Saturday" (gWeekdays)
-Switch am230timerSunday	"Sunday" (gWeekdays)
-Switch am230AllDays	"All days" (gWeekdays)
+Switch am230timerMonday	"Montag" (gWeekdays)
+Switch am230timerTuesday "Dienstag" (gWeekdays)
+Switch am230timerWednesday	"Mittwoch" (gWeekdays)
+Switch am230timerThursday	"Donnerstag" (gWeekdays)
+Switch am230timerFriday	"Freitag" (gWeekdays)
+Switch am230timerSaturday	"Samstag" (gWeekdays)
+Switch am230timerSunday	"Sonntag" (gWeekdays)
+Switch am230AllDays	"Alle Tage" (gWeekdays)
 Number am230TimerWeekdays "Timers (bitmask) [%d]" {channel="husqvarnaam:ipAm:am230:timer#timerActiveWeekdays" }
 ```
 
@@ -256,72 +242,16 @@ import java.time.ZonedDateTime
 import java.util.TimeZone
 import java.util.Calendar
 
-var java.util.concurrent.locks.ReentrantLock timer1Start = null
-var java.util.concurrent.locks.ReentrantLock timer1Stop = null
-var java.util.concurrent.locks.ReentrantLock timer2Start = null
-var java.util.concurrent.locks.ReentrantLock timer2Stop = null
-var java.util.concurrent.locks.ReentrantLock weTimer1Start = null
-var java.util.concurrent.locks.ReentrantLock weTimer1Stop = null
-var java.util.concurrent.locks.ReentrantLock weTimer2Start = null
-var java.util.concurrent.locks.ReentrantLock weTimer2Stop = null
-var java.util.concurrent.locks.ReentrantLock weekDaysLock = null
+val ReentrantLock weekDaysLock = new ReentrantLock()
 
-var int MONDAY=1
-var int TUESDAY=2
-var int WEDNESDAY=4
-var int THURSDAY=8
-var int FRIDAY=16
-var int SATURDAY=32
-var int SUNDAY=64
-
-// function converts HourItem and MinuteItem into DateTimeItem and sends command
-val org.eclipse.xtext.xbase.lib.Functions$Function4<NumberItem,NumberItem,DateTimeItem,ReentrantLock,Void> timerLogic = [
-	NumberItem hourItem,
-	NumberItem minuteItem,
-	DateTimeItem timerItem,
-	ReentrantLock lock	|
-    if( (hourItem.state != NULL) && (minuteItem.state != NULL) && (hourItem.state != UNDEF) && (minuteItem.state != UNDEF)){
-		  try {
-			lock.lock()
-			  var Calendar calendar =Calendar.getInstance()
-			  calendar.clear()
-						  
-			  // Copy the Alarm-Time from the UI to local variable
-			  var hour = (hourItem.state as DecimalType).intValue
-			  var minute = (minuteItem.state as DecimalType).intValue
-								
-			  // Combine the hour and minutes to calendar to be forwarded to backend
-			  calendar.set(Calendar.HOUR_OF_DAY, hour)
-			  calendar.set(Calendar.MINUTE, minute)
-			  logInfo("husqvarnaam.rules","Updating UI timer -> AM "+timerItem)
-			  timerItem.sendCommand(new DateTimeType(ZonedDateTime.ofInstant(calendar.toInstant(), TimeZone.getDefault().toZoneId())
-						  .withFixedOffsetZone()))
-		 } finally  {
-		  // release the lock - we are ready to process the next event
-		  lock.unlock()
-		}
-	}
-]
-
-// function converts DateTimeItem into Hour(DecimalType) and Minute(DecimalType) and updates
-val org.eclipse.xtext.xbase.lib.Functions$Function4<DateTimeItem,NumberItem,NumberItem,ReentrantLock,Void> timerUI = [
-	DateTimeItem timerItem,
-	NumberItem hourItem,
-	NumberItem minuteItem,
-	ReentrantLock lock	|
-    if (timerItem.state != NULL){
-        try {
-            lock.lock()
-            logInfo("husqvarnaam.rules","Updating timer -> UI "+timerItem)
-            var ZonedDateTime dateTime = (timerItem.state as DateTimeType).zonedDateTime
-            hourItem.postUpdate(new DecimalType(dateTime.hour))
-            minuteItem.postUpdate(new DecimalType(dateTime.minute))
-         } finally  {
-          // release the lock - we are ready to process the next event
-          lock.unlock()
-        }
-    }
-]
+val int MONDAY=1
+val int TUESDAY=2
+val int WEDNESDAY=4
+val int THURSDAY=8
+val int FRIDAY=16
+val int SATURDAY=32
+val int SUNDAY=64
+val long LOCK_TIMEOUT=50L
 
 val org.eclipse.xtext.xbase.lib.Functions$Function2<NumberItem,Integer,OnOffType> convertOnOff = [
 	NumberItem bitMask,
@@ -335,187 +265,177 @@ val org.eclipse.xtext.xbase.lib.Functions$Function2<NumberItem,Integer,OnOffType
 	}
 ]
 
-rule "Initialization"
+val org.eclipse.xtext.xbase.lib.Functions$Function2<DateTimeItem,NumberItem,Void> timerUI = [
+	DateTimeItem timerItem,
+	NumberItem guiTimerItem |
+	if (timerItem.state != NULL){
+		var ZonedDateTime dateTime = (timerItem.state as DateTimeType).zonedDateTime;
+		guiTimerItem.postUpdate(new DecimalType(dateTime.hour * 60 + dateTime.minute));
+		logInfo("husqvarnaam.rules","Updating AM timer -> UI "+guiTimerItem)
+	}
+]
+
+val org.eclipse.xtext.xbase.lib.Functions$Function2<NumberItem,DateTimeItem,Void> timerLogic = [
+	NumberItem guiTimerItem,
+	DateTimeItem timerItem |
+	if( (guiTimerItem.state != NULL) && (guiTimerItem.state != UNDEF) ){
+	  var Calendar calendar =Calendar.getInstance()
+	  calendar.clear()
+	  // Copy the Alarm-Time from the UI to local variable
+	  var minutesOfDay = (guiTimerItem.state as DecimalType).intValue
+	  // Calendar rolls over to be forwarded to backend
+	  calendar.set(Calendar.MINUTE, minutesOfDay)
+	  timerItem.sendCommand(new DateTimeType(ZonedDateTime.ofInstant(calendar.toInstant(), TimeZone.getDefault().toZoneId())
+				  .withFixedOffsetZone()))
+	  logInfo("husqvarnaam.rules","Updating UI timer -> AM "+timerItem)
+	}
+]
+
+rule "Initialization AM Timer"
  when 
    System started
  then
-    // Initialize timer locks
-    if (timer1Start === null) {
-        timer1Start = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (timer1Stop === null) {
-        timer1Stop = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (timer2Start === null) {
-        timer2Start = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (timer2Stop === null) {
-        timer2Stop = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (weTimer1Start === null) {
-        weTimer1Start = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (weTimer1Stop === null) {
-        weTimer1Stop = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (weTimer2Start === null) {
-        weTimer2Start = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (weTimer2Stop === null) {
-        weTimer2Stop = new java.util.concurrent.locks.ReentrantLock()
-    }
-    if (weekDaysLock === null) {
-        weekDaysLock = new java.util.concurrent.locks.ReentrantLock()
-    }
     // initialize time gui elements
-
-    am230Timer1StartHour.postUpdate(UnDefType.UNDEF)
-    am230Timer1StartMinute.postUpdate(UnDefType.UNDEF)
-    am230Timer2StartHour.postUpdate(UnDefType.UNDEF)
-    am230Timer2StartMinute.postUpdate(UnDefType.UNDEF)
-    am230Timer1StopHour.postUpdate(UnDefType.UNDEF)
-    am230Timer1StopMinute.postUpdate(UnDefType.UNDEF)
-    am230Timer2StopHour.postUpdate(UnDefType.UNDEF)
-    am230Timer2StopMinute.postUpdate(UnDefType.UNDEF)
-    am230WeTimer1StartHour.postUpdate(UnDefType.UNDEF)
-    am230WeTimer1StartMinute.postUpdate(UnDefType.UNDEF)
-    am230WeTimer2StartHour.postUpdate(UnDefType.UNDEF)
-    am230WeTimer2StartMinute.postUpdate(UnDefType.UNDEF)
-    am230WeTimer1StopHour.postUpdate(UnDefType.UNDEF)
-    am230WeTimer1StopMinute.postUpdate(UnDefType.UNDEF)
-    am230WeTimer2StopHour.postUpdate(UnDefType.UNDEF)
-    am230WeTimer2StopMinute.postUpdate(UnDefType.UNDEF)
-
+	am230Time1StartUi.postUpdate(UnDefType.UNDEF)
+	am230Time1StopUi.postUpdate(UnDefType.UNDEF)
+	am230Time2StartUi.postUpdate(UnDefType.UNDEF)
+	am230Time2StopUi.postUpdate(UnDefType.UNDEF)
+	am230WeTime1StartUi.postUpdate(UnDefType.UNDEF)
+	am230WeTime1StopUi.postUpdate(UnDefType.UNDEF)
+	am230WeTime2StartUi.postUpdate(UnDefType.UNDEF)
+	am230WeTime2StopUi.postUpdate(UnDefType.UNDEF)
  end
 
 rule "uiTimer1Start"
 when
-	Item am230Timer1StartHour received command or 
-	Item am230Timer1StartMinute received command
+	Item am230Timer1StartUi received command
 then
- timerLogic.apply(am230Timer1StartHour,am230Timer1StartMinute,am230Timer1Start,timer1Start)
+	timerLogic.apply(am230Timer1StartUi,am230Timer1Start)
 end
 
 rule "updateTimer1Start"
-when Item am230Timer1Start received update
+when
+	Item am230Timer1Start changed
 then
- timerUI.apply(am230Timer1Start,am230Timer1StartHour,am230Timer1StartMinute,timer1Start)
+	timerUI.apply(am230Timer1Start,am230Timer1StartUi)
 end
 
 rule "uiTimer1Stop"
 when
-	Item am230Timer1StopHour received command or 
-	Item am230Timer1StopMinute received command
+	Item am230Timer1StopUi received command
 then
-  timerLogic.apply(am230Timer1StopHour,am230Timer1StopMinute,am230Timer1Stop,timer1Stop)
+	timerLogic.apply(am230Timer1StopUi,am230Timer1Stop)
 end
 
 rule "updateTimer1Stop"
-when Item am230Timer1Stop received update
+when
+	Item am230Timer1Stop changed
 then
- timerUI.apply(am230Timer1Stop,am230Timer1StopHour,am230Timer1StopMinute,timer1Stop)
+	timerUI.apply(am230Timer1Stop,am230Timer1StopUi)
 end
 
 rule "uiTimer2Start"
 when
-	Item am230Timer2StartHour received command or 
-	Item am230Timer2StartMinute received command
+	Item am230Timer2StartUi received command
 then
-  timerLogic.apply(am230Timer2StartHour,am230Timer2StartMinute,am230Timer2Start,timer2Start)
+	timerLogic.apply(am230Timer2StartUi,am230Timer2Start)
 end
 
 rule "updateTimer2Start"
-when Item am230Timer2Start received update
+when
+	Item am230Timer2Start changed
 then
- timerUI.apply(am230Timer2Start,am230Timer2StartHour,am230Timer2StartMinute,timer2Start)
+	timerUI.apply(am230Timer2Start,am230Timer2StartUi)
 end
 
 rule "uiTimer2Stop"
 when
-	Item am230Timer2StopHour received command or 
-	Item am230Timer2StopMinute received command
+	Item am230Timer2StopUi received command
 then
-  timerLogic.apply(am230Timer2StopHour,am230Timer2StopMinute,am230Timer2Stop,timer2Stop)
+	timerLogic.apply(am230Timer2StopUi,am230Timer2Stop)
 end
 
 rule "updateTimer2Stop"
-when Item am230Timer2Stop received update
+when
+	Item am230Timer2Stop changed
 then
- timerUI.apply(am230Timer2Stop,am230Timer2StopHour,am230Timer2StopMinute,timer2Stop)
+	timerUI.apply(am230Timer2Stop,am230Timer2StopUi)
 end
 
 rule "uiWeTimer1Start"
 when
-	Item am230WeTimer1StartHour received command or 
-	Item am230WeTimer1StartMinute received command
+	Item am230WeTimer1StartUi received command
 then
-  timerLogic.apply(am230WeTimer1StartHour,am230WeTimer1StartMinute, am230WeTimer1Start,weTimer1Start)
+	timerLogic.apply(am230WeTimer1StartUi,am230WeTimer1Start)
 end
 
 rule "updateWeTimer1Start"
-when Item am230WeTimer1Start received update
+when 
+	Item am230WeTimer1Start changed
 then
- timerUI.apply(am230WeTimer1Start,am230WeTimer1StartHour,am230WeTimer1StartMinute,weTimer1Start)
+	timerUI.apply(am230WeTimer1Start,am230WeTimer1StartUi)
 end
 
 rule "uiWeTimer1Stop"
-when Item am230WeTimer1StopHour received command or Item am230WeTimer1StopMinute received command
+when 
+	Item am230WeTimer1StopUi received command
 then
-  timerLogic.apply(am230WeTimer1StopHour,am230WeTimer1StopMinute,am230WeTimer1Stop,weTimer1Stop)
+	timerLogic.apply(am230WeTimer1StopUi,am230WeTimer1Stop)
 end
 
 rule "updateWeTimer1Stop"
-when Item am230WeTimer1Stop received update
+when 
+	Item am230WeTimer1Stop changed
 then
- timerUI.apply(am230WeTimer1Stop,am230WeTimer1StopHour,am230WeTimer1StopMinute,weTimer1Stop)
+	timerUI.apply(am230WeTimer1Stop,am230WeTimer1StopUi)
 end
 
 rule "uiWeTimer2Start"
 when
-	Item am230WeTimer2StartHour received command or 
-	Item am230WeTimer2StartMinute received command
+	Item am230WeTimer2StartUi received command
 then
-  timerLogic.apply(am230WeTimer2StartHour,am230WeTimer2StartMinute,am230WeTimer2Start,weTimer2Start)
+	timerLogic.apply(am230WeTimer2StartUi,am230WeTimer2Start)
 end
 
 rule "updateWeTimer2Start"
-when Item am230WeTimer2Start received update
+when 
+	Item am230WeTimer2Start changed
 then
- timerUI.apply(am230WeTimer2Start,am230WeTimer2StartHour,am230WeTimer2StartMinute,weTimer2Start)
+	timerUI.apply(am230WeTimer2Start,am230WeTimer2StartUi)
 end
 
 rule "uiWeTimer2Stop"
 when
-	Item am230WeTimer2StopHour received command or 
-	Item am230WeTimer2StopMinute received command
+	Item am230WeTimer2StopUi received command
 then
-  timerLogic.apply(am230WeTimer2StopHour,am230WeTimer2StopMinute,am230WeTimer2Stop,weTimer2Stop)
+	timerLogic.apply(am230WeTimer2StopUi,am230WeTimer2Stop)
 end
 
 rule "updateWeTimer2Stop"
-when Item am230WeTimer2Stop received update
+when 
+	Item am230WeTimer2Stop changed
 then
- timerUI.apply(am230WeTimer2Stop,am230WeTimer2StopHour,am230WeTimer2StopMinute,weTimer2Stop)
+	timerUI.apply(am230WeTimer2Stop,am230WeTimer2StopUi)
 end
 
 // updates timer weekdays bitmask in UI, if changed on AM
 rule "updateTimerWeekdays"
 when
-	Item am230TimerWeekdays received update
+	Item am230TimerWeekdays changed
 then
 	try{
 		weekDaysLock.lock()
 		logInfo("husqvarnaam.rules","Weekday Timers changed on AM, active on "+(am230TimerWeekdays.state as DecimalType).intValue)
 		am230timerMonday.postUpdate(convertOnOff.apply(am230TimerWeekdays,MONDAY))
-	    am230timerTuesday.postUpdate(convertOnOff.apply(am230TimerWeekdays,TUESDAY))
-	    am230timerWednesday.postUpdate(convertOnOff.apply(am230TimerWeekdays,WEDNESDAY))
-	    am230timerThursday.postUpdate(convertOnOff.apply(am230TimerWeekdays,THURSDAY))
-	    am230timerFriday.postUpdate(convertOnOff.apply(am230TimerWeekdays,FRIDAY))
-	    am230timerSaturday.postUpdate(convertOnOff.apply(am230TimerWeekdays,SATURDAY))
-	    am230timerSunday.postUpdate(convertOnOff.apply(am230TimerWeekdays,SUNDAY))
-   } finally  {
+		am230timerTuesday.postUpdate(convertOnOff.apply(am230TimerWeekdays,TUESDAY))
+		am230timerWednesday.postUpdate(convertOnOff.apply(am230TimerWeekdays,WEDNESDAY))
+		am230timerThursday.postUpdate(convertOnOff.apply(am230TimerWeekdays,THURSDAY))
+		am230timerFriday.postUpdate(convertOnOff.apply(am230TimerWeekdays,FRIDAY))
+		am230timerSaturday.postUpdate(convertOnOff.apply(am230TimerWeekdays,SATURDAY))
+		am230timerSunday.postUpdate(convertOnOff.apply(am230TimerWeekdays,SUNDAY))
+	} finally  {
      // release the lock - we are ready to process the next event
-     weekDaysLock.unlock()
+		weekDaysLock.unlock()
   }
 end
 
@@ -535,44 +455,44 @@ then
   // are processed one after the other.
   try {
 	weekDaysLock.lock()
-  	var int allDays = 0
+	var int allDays = 0
     // Create bitmask
-    var mo=am230timerMonday.state as OnOffType
-    var tu=am230timerTuesday.state as OnOffType
-    var we=am230timerWednesday.state as OnOffType
-    var th=am230timerThursday.state as OnOffType
-    var fr=am230timerFriday.state as OnOffType
-    var sa=am230timerSaturday.state as OnOffType
-    var su=am230timerSunday.state as OnOffType
+	var mo=am230timerMonday.state as OnOffType
+	var tu=am230timerTuesday.state as OnOffType
+	var we=am230timerWednesday.state as OnOffType
+	var th=am230timerThursday.state as OnOffType
+	var fr=am230timerFriday.state as OnOffType
+	var sa=am230timerSaturday.state as OnOffType
+	var su=am230timerSunday.state as OnOffType
 	
 	logInfo("husqvarnaam.rules","Timer active Monday "+mo)
 
-    if(mo == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(MONDAY)
-    }
-    if(tu == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(TUESDAY)
-    }
-    if(we == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(WEDNESDAY)
-    }
-    if(th== OnOffType.ON){
-    	allDays= allDays.bitwiseOr(THURSDAY)
-    }
-    if(fr == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(FRIDAY)
-    }
-    if(sa == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(SATURDAY)
-    }
-    if(su == OnOffType.ON){
-    	allDays= allDays.bitwiseOr(SUNDAY)
-    }
+    	if(mo == OnOffType.ON){
+		allDays= allDays.bitwiseOr(MONDAY)
+    	}
+    	if(tu == OnOffType.ON){
+		allDays= allDays.bitwiseOr(TUESDAY)
+    	}
+    	if(we == OnOffType.ON){
+		allDays= allDays.bitwiseOr(WEDNESDAY)
+    	}
+    	if(th== OnOffType.ON){
+		allDays= allDays.bitwiseOr(THURSDAY)
+    	}
+    	if(fr == OnOffType.ON){
+		allDays= allDays.bitwiseOr(FRIDAY)
+    	}
+    	if(sa == OnOffType.ON){
+		allDays= allDays.bitwiseOr(SATURDAY)
+    	}
+    	if(su == OnOffType.ON){
+		allDays= allDays.bitwiseOr(SUNDAY)
+    	}
 	logInfo("husqvarnaam.rules","Timer active on "+allDays)
-    am230TimerWeekdays.sendCommand(new DecimalType(allDays))
+	am230TimerWeekdays.sendCommand(new DecimalType(allDays))
    } finally  {
      // release the lock - we are ready to process the next event
-     weekDaysLock.unlock()
+	weekDaysLock.unlock()
   }
 end
 
@@ -586,27 +506,27 @@ then
   // are processed one after the other.
   try {
 	weekDaysLock.lock()
-    var all=am230AllDays.state as OnOffType
-    if(all == OnOffType.ON){
-    	am230timerMonday.postUpdate(OnOffType.ON)
+    	var all=am230AllDays.state as OnOffType
+    	if(all == OnOffType.ON){
+	    am230timerMonday.postUpdate(OnOffType.ON)
 	    am230timerTuesday.postUpdate(OnOffType.ON)
 	    am230timerWednesday.postUpdate(OnOffType.ON)
 	    am230timerThursday.postUpdate(OnOffType.ON)
 	    am230timerFriday.postUpdate(OnOffType.ON)
 	    am230timerSaturday.postUpdate(OnOffType.ON)
 	    am230timerSunday.postUpdate(OnOffType.ON)
-    } else {
-    	am230timerMonday.postUpdate(OnOffType.OFF)
+    	} else {
+	    am230timerMonday.postUpdate(OnOffType.OFF)
 	    am230timerTuesday.postUpdate(OnOffType.OFF)
 	    am230timerWednesday.postUpdate(OnOffType.OFF)
 	    am230timerThursday.postUpdate(OnOffType.OFF)
 	    am230timerFriday.postUpdate(OnOffType.OFF)
 	    am230timerSaturday.postUpdate(OnOffType.OFF)
 	    am230timerSunday.postUpdate(OnOffType.OFF)
-    }
+    	}
    } finally  {
      // release the lock - we are ready to process the next event
-     weekDaysLock.unlock()
+     	weekDaysLock.unlock()
   }
 end
 ```
@@ -616,105 +536,72 @@ end
 ```
 sitemap demo label="Husqvarna Menu"
 {
-	Frame label="Husqvarna AM" {
-	
-		Text item=am230StateInformation icon="am"
-		Text item=am230MowTimeInformation
-		Text item=am230ChargeTimeInformation
-		Text item=am230OperationTimeInformation
-		Text item=am230CurrentMowerDateTime
-		Switch item=am230ModeSet mappings=[0="MAN", 1="AUTO", 3="HOME", 4="DEMO"]
+    Frame label="Husqvarna Automower" icon="am" {
+	Text item=am230StateInformation icon="am"
+	Text item=am230MowTimeInformation
+	Text item=am230ChargeTimeInformation
+	Text item=am230OperationTimeInformation
+	Text item=am230CurrentMowerDateTime
+	Switch item=am230ModeSet mappings=[0="MAN", 1="AUTO", 3="HOME", 4="DEMO"]
 		
-		Text label="Husqvarna AM Timer" {
-			Frame {
-				Switch item=am230TimerActive
-			}
-			Frame label="Weekdays " {
-				Switch item=am230timerMonday
-				Switch item=am230timerTuesday
-				Switch item=am230timerWednesday
-				Switch item=am230timerThursday
-				Switch item=am230timerFriday
-				Switch item=am230timerSaturday
-				Switch item=am230timerSunday
-				Switch item=am230AllDays
-			}
-			Frame {
-				Text label="Week Timer" icon="time-on"{
-					Frame {
-						Text label="Timer 1"{
-							Frame label="Start" {
-									Setpoint item=am230Timer1StartHour minValue=0 maxValue=23 step=1
-									Setpoint item=am230Timer1StartMinute minValue=0 maxValue=55 step=5
-							}
-							Frame label="Stop" {
-									Setpoint item=am230Timer1StopHour minValue=0 maxValue=23 step=1
-									Setpoint item=am230Timer1StopMinute minValue=0 maxValue=55 step=5
-							}
-						}
-					}
-					Frame {
-						Text label="Timer 2"{
-							Frame label="Start" {
-									Setpoint item=am230Timer2StartHour minValue=0 maxValue=23 step=1
-									Setpoint item=am230Timer2StartMinute minValue=0 maxValue=55 step=5
-							}
-							Frame label="Stop" {
-									Setpoint item=am230Timer2StopHour minValue=0 maxValue=23 step=1
-									Setpoint item=am230Timer2StopMinute minValue=0 maxValue=55 step=5
-							}
-						}
-					}
-				}
-				Text label="Weekend Timer" icon="time-on" {
-					Frame {
-						Text label="Timer 1"{
-	 
-							Frame label="Start Time" {
-											Setpoint item=am230WeTimer1StartHour minValue=0 maxValue=23 step=1
-											Setpoint item=am230WeTimer1StartMinute minValue=0 maxValue=55 step=5
-							}
-							Frame label="End Time" {
-											Setpoint item=am230WeTimer1StopHour minValue=0 maxValue=23 step=1
-											Setpoint item=am230WeTimer1StopMinute minValue=0 maxValue=55 step=5
-							}
-						}
-						Text label="Timer 2"{
-	 
-							Frame label="Start Time" {
-											Setpoint item=am230WeTimer2StartHour minValue=0 maxValue=23 step=1
-											Setpoint item=am230WeTimer2StartMinute minValue=0 maxValue=55 step=5
-							}
-							Frame label="End Time" {
-											Setpoint item=am230WeTimer2StopHour minValue=0 maxValue=23 step=1
-											Setpoint item=am230WeTimer2StopMinute minValue=0 maxValue=55 step=5
-							}
-						}
-					}
-				}
-
-			}
+	Text label="Husqvarna AM Timer" icon="time" {
+		Frame {
+			Switch item=am230TimerActive
 		}
-		Text label="Husqvarna AM Details" {
-			Text item=am230rectangleModeState
-			Text item=am230rectangleModePercent
-			Text item=am230rectangleModeReference
-			Text item=am230batteryCapacityUsedMaH
-			Text item=am230batteryCurrentMa
-			Text item=am230batteryCapacityMaH
-			Text item=am230batteryCapacitySearchStartMaH
-			Text item=am230batteryVoltage
-			Text item=am230batteryTemperature
-			Text item=am230batteryTemperatureCharge
-			Text item=am230batteryLatestChargeMin
-			Text item=am230batteryNextTemperatureMeasurementSec
-			Text item=am230bladeVelocityMotor
-			Text item=am230velocityLeft
-			Text item=am230velocityRight
-			Text item=am230firmwareVersion
-			Text item=am230languageFileVersion
+		Frame label="Wochentage" visibility=[am230TimerActive==ON]{
+			Switch item=am230timerMonday
+			Switch item=am230timerTuesday
+			Switch item=am230timerWednesday
+			Switch item=am230timerThursday
+			Switch item=am230timerFriday
+			Switch item=am230timerSaturday
+			Switch item=am230timerSunday
+			Switch item=am230AllDays
+		}
+		Frame visibility=[am230TimerActive==ON] {
+			Text label="Wochen (Mo-Do) Timer" icon="time-on"{
+				Frame label="Timer 1" {
+					Setpoint item=am230Timer1StartUi label="Start [JS(NumberToClock.js):%s]" minValue=0 maxValue=720 step=15
+					Setpoint item=am230Timer1StopUi label="Stop [JS(NumberToClock.js):%s]" minValue=0 maxValue=720 step=15
+				}
+				Frame label="Timer 2" {
+					Setpoint item=am230Timer2StartUi label="Start [JS(NumberToClock.js):%s]" minValue=720 maxValue=1425 step=15
+					Setpoint item=am230Timer2StopUi label="Stop [JS(NumberToClock.js):%s]" minValue=720 maxValue=1425 step=15
+				}
+			}
+			Text label="Wochenende (Fr-So) Timer" icon="time-on" {
+				Frame label="Timer 1" {
+					Setpoint item=am230WeTimer1StartUi label="Start [JS(NumberToClock.js):%s]" minValue=0 maxValue=720 step=15
+					Setpoint item=am230WeTimer1StopUi label="Stop [JS(NumberToClock.js):%s]" minValue=0 maxValue=720 step=15
+				}
+				Frame label="Timer 2" {
+					Setpoint item=am230WeTimer2StartUi label="Start [JS(NumberToClock.js):%s]" minValue=720 maxValue=1425 step=15
+					Setpoint item=am230WeTimer2StopUi label="Stop [JS(NumberToClock.js):%s]" minValue=720 maxValue=1425 step=15
+				}
+			}
+
 		}
 	}
+	Text label="Husqvarna AM Details" {
+		Text item=am230rectangleModeState
+		Text item=am230rectangleModePercent
+		Text item=am230rectangleModeReference
+		Text item=am230batteryCapacityUsedMaH
+		Text item=am230batteryCurrentMa
+		Text item=am230batteryCapacityMaH
+		Text item=am230batteryCapacitySearchStartMaH
+		Text item=am230batteryVoltage
+		Text item=am230batteryTemperature
+		Text item=am230batteryTemperatureCharge
+		Text item=am230batteryLatestChargeMin
+		Text item=am230batteryNextTemperatureMeasurementSec
+		Text item=am230bladeVelocityMotor
+		Text item=am230velocityLeft
+		Text item=am230velocityRight
+		Text item=am230firmwareVersion
+		Text item=am230languageFileVersion
+	}
+    }
 }
 ```
 

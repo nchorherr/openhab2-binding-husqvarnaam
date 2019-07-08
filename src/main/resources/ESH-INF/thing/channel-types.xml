@@ -219,7 +219,7 @@
 		<state readOnly="true" />
 	</channel-type>
 	<channel-type id="velocityMotorChannel">
-		<item-type>Number:Frequency</item-type>
+		<item-type>Number</item-type>
 		<label>Velocity Motor</label>
 		<description>Displays velocity of motor of the AM ?</description> 
 		<state readOnly="true" />
