@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:config-description="https://openhab.org/schemas/config-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/config-description/v1.0.0 https://openhab.org/schemas/config-description-1.0.0.xsd">
+
+	<!-- Config for Husqvarnaam Binding -->
+	<config-description uri="thing-type:husqvarnaam:ipAm">
+		<parameter name="address" type="text" required="true">
+			<context>network-address</context>
+			<label>Address</label>
+			<description>The IP address of the Husqvarna AM to control.</description>
+		</parameter>
+		<parameter name="tcpPort" type="integer" max="65535" min="1" required="true">
+			<label>TCP Port</label>
+			<description>The TCP port number used to connect to the AM.</description>
+		</parameter>
+		<parameter name="pollingIntervalInSec" type="integer" min="1" required="false">
+			<default>60</default>
+			<label>Polling Interval</label>
+			<description>The polling interval in seconds to check the automower for status updates.</description>
+		</parameter>
+		<parameter name="expertMode" type="boolean" required="false">
+			<default>false</default>
+			<label>Expert Mode</label>
+			<description>Are detailed informations of the AM available?</description>
+		</parameter>
+	</config-description>
+
+	<config-description uri="thing-type:husqvarnaam:ipAmUnsupported">
+		<parameter name="address" type="text" required="true">
+			<context>network-address</context>
+			<label>Address</label>
+			<description>The IP address of the Husqvarna AM to control.</description>
+		</parameter>
+		<parameter name="tcpPort" type="integer" max="65535" min="1" required="true">
+			<label>TCP Port</label>
+			<description>The TCP port number used to connect to the AM.</description>
+		</parameter>
+		<parameter name="pollingIntervalInSec" type="integer" min="1" required="false">
+			<default>60</default>
+			<label>Polling Interval</label>
+			<description>The polling interval in seconds to check the automower for status updates.</description>
+		</parameter>
+		<parameter name="expertMode" type="boolean" required="false">
+			<default>false</default>
+			<label>Expert Mode</label>
+			<description>Are detailed informations of the AM available?</description>
+		</parameter>
+	</config-description>
+
+
+</config-description:config-descriptions>

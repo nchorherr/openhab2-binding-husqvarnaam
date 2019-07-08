@@ -56,10 +56,6 @@ public class AmHandlerFactory extends BaseThingHandlerFactory {
                 || thingTypeUID.equals(
                         HusqvarnaAmBindingConstants.IP_AM_UNSUPPORTED_THING_TYPE)) {
             return new IpAmHandler(thing);
-            // } else if
-            // (thingTypeUID.equals(HusqvarnaAmBindingConstants.SERIAL_AVR_THING_TYPE))
-            // {
-            // return new SerialAmHandler(thing);
         }
 
         return null;

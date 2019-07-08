@@ -9,13 +9,7 @@ The automower types 220 AC /230 ACX do not have a WLAN-Module out-of-the-box (se
 
 ## Discovery
 
-This binding does not support discovery of the thing. Place a configuration file in the services folder named e.g. husqvarna.cfg
-with the following content
-
-```
-#Put your configuration here
-org.openhab.husqvarnaam:enableAutoDiscovery=false
-```
+This binding does not support discovery of the thing.
 
 ## Thing configuration
 
@@ -40,10 +34,10 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
 
 <table>
     <tr><td><b>Channel</b></td><td><b>Channel Group</b></td><td><b>Item Type</b></td><td><b>Description</b></td></tr>
-    <tr><td>currentState</td><td>displayInformation</td><td>String</td><td>Displays the current state of the AM</td></tr>
-    <tr><td>mowTime</td><td>displayInformation</td><td>String</td><td>Displays the current mow time in [min] of the AM</td></tr>
-    <tr><td>chargeTime</td><td>displayInformation</td><td>String</td><td>Displays the current charge time in [min] of the AM</td></tr>
-    <tr><td>operationTime</td><td>displayInformation</td><td>String</td><td>Displays the total operations time in [h] of the AM</td></tr>
+    <tr><td>currentState</td><td>displayInformation</td><td>Number</td><td>Displays the current state of the AM</td></tr>
+    <tr><td>mowTime</td><td>displayInformation</td><td>Number:Time</td><td>Displays the current mow time in [min] of the AM</td></tr>
+    <tr><td>chargeTime</td><td>displayInformation</td><td>Number:Time</td><td>Displays the current charge time in [min] of the AM</td></tr>
+    <tr><td>operationTime</td><td>displayInformation</td><td>Number:Time</td><td>Displays the total operations time in [h] of the AM</td></tr>
     <tr><td>currentDateTime</td><td>displayInformation</td><td>DateTime</td><td>Displays the current Date and Time of the AM</td></tr>
     <tr><td>mode</td><td>displayInformation</td><td>String</td><td>Operation Mode for AM. Possible values are:
     <br/>
@@ -52,6 +46,8 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
 	3=HOME<br/>
 	4=DEMO<br/>
     </td></tr>
+    <tr><td>Latest Update Time</td><td>displayInformation</td><td>DateTime</td><td>Latest time of update</td></tr>
+    <tr><td>Expert mode</td><td>displayInformation</td><td>Switch</td><td>Is expert mode active</td></tr>   
     <tr><td>timerActiveMode</td><td>timer</td><td>Switch</td><td>Timer Active/Inactive for AM</td></tr>
     <tr><td>timerActiveWeekdays</td><td>timer</td><td>Number</td><td>Timer of day Active/Inactive for AM (This is a bitmask)</td></tr>
     <tr><td>timer1Start</td><td>timer</td><td>DateTime</td><td>1. Timer in hh:mm for AM</td></tr>
@@ -62,21 +58,21 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
     <tr><td>weTimer1Stop</td><td>timer</td><td>DateTime</td><td>1. Weekend Timer in hh:mm for AM</td></tr>
     <tr><td>weTimer2Start</td><td>timer</td><td>DateTime</td><td>2. Weekend Timer in hh:mm for AM</td></tr>
     <tr><td>weTimer2Stop</td><td>timer</td><td>DateTime</td><td>2. Weekend Timer in hh:mm for AM</td></tr>
-    <tr><td>rectangleModeState</td><td>details</td><td>String</td><td>Displays rectangle mode state of the AM ?</td></tr>
-    <tr><td>rectangleModePercent</td><td>details</td><td>String</td><td>Displays rectangle mode percent [%] of the AM ?</td></tr>
+    <tr><td>rectangleModeState</td><td>details</td><td>Switch</td><td>Displays rectangle mode state of the AM ?</td></tr>
+    <tr><td>rectangleModePercent</td><td>details</td><td>Number:Dimensionless</td><td>Displays rectangle mode percent [%] of the AM</td></tr>
     <tr><td>rectangleModeReference</td><td>details</td><td>String</td><td>Displays rectangle mode Reference of the AM ?</td></tr>
-    <tr><td>batteryCapacityUsedMaH</td><td>details</td><td>String</td><td>Displays battery capacity used [mAh] of the AM</td></tr>
-    <tr><td>batteryCurrentMa</td><td>details</td><td>String</td><td>Displays battery current [mA] of the AM</td></tr>
-    <tr><td>batteryCapacityMaH</td><td>details</td><td>String</td><td>Displays battery capacity [mAh] of the AM ?</td></tr>
-    <tr><td>batteryCapacitySearchStartMaH</td><td>details</td><td>String</td><td>Displays battery capacity Search Start [mAh] of the AM ?</td></tr>
-    <tr><td>batteryVoltage</td><td>details</td><td>String</td><td>Displays battery Voltage [V] of the AM ?</td></tr>
-    <tr><td>batteryTemperature</td><td>details</td><td>String</td><td>Displays battery Temperature [°C]of the AM ?</td></tr>
-    <tr><td>batteryTemperatureCharge</td><td>details</td><td>String</td><td>Displays battery Temperature Charge of the AM ?</td></tr>
-    <tr><td>batteryLatestChargeMin</td><td>details</td><td>String</td><td>Displays battery latest Charge [m] of the AM ?</td></tr>
+    <tr><td>batteryCapacityUsedMaH</td><td>details</td><td>Number:Energy</td><td>Displays battery capacity used [mAh] of the AM</td></tr>
+    <tr><td>batteryCurrentMa</td><td>details</td><td>Number:ElectricCurrent</td><td>Displays battery current [mA] of the AM</td></tr>
+    <tr><td>batteryCapacityMaH</td><td>details</td><td>Number:Energy</td><td>Displays battery capacity [mAh] of the AM</td></tr>
+    <tr><td>batteryCapacitySearchStartMaH</td><td>details</td><td>String</td><td>Displays battery capacity Search Start [mAh] of the AM</td></tr>
+    <tr><td>batteryVoltage</td><td>details</td><td>Number:ElectricPotential</td><td>Displays battery Voltage [V] of the AM</td></tr>
+    <tr><td>batteryTemperature</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature [°C]of the AM</td></tr>
+    <tr><td>batteryTemperatureCharge</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature Charge of the AM</td></tr>
+    <tr><td>batteryLatestChargeMin</td><td>details</td><td>Number:Time</td><td>Displays battery latest Charge [m] of the AM</td></tr>
     <tr><td>batteryNextTemperatureMeasurementSec</td><td>details</td><td>String</td><td>Displays battery next temperature [s] of the AM ?</td></tr>
-    <tr><td>velocityMotor</td><td>details</td><td>String</td><td>Displays velocity of motor [?] of the AM ?</td></tr>
-    <tr><td>velocityLeft</td><td>details</td><td>String</td><td>Displays velocity of left wheel [?] of the AM ?</td></tr>
-    <tr><td>velocityRight</td><td>details</td><td>String</td><td>Displays velocity of right wheel [?] of the AM ?</td></tr>
+    <tr><td>velocityMotor</td><td>details</td><td>Number</td><td>Displays velocity of motor [?] of the AM ?</td></tr>
+    <tr><td>velocityLeft</td><td>details</td><td>Number:Speed</td><td>Displays velocity of left wheel [?] of the AM</td></tr>
+    <tr><td>velocityRight</td><td>details</td><td>Number:Speed</td><td>Displays velocity of right wheel [?] of the AM</td></tr>
     <tr><td>firmwareVersion</td><td>details</td><td>String</td><td>Displays firmware version of the AM ?</td></tr>
     <tr><td>languageFileVersion</td><td>details</td><td>String</td><td>Displays language file version of the AM ?</td></tr>
 </table>

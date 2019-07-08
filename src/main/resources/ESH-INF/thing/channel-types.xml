@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="husqvarnaam"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Channel groups for Husqvarna AM Binding -->
+	<channel-group-type id="displayInformationGroup">
+		<label>Information AM</label>
+		<channels>
+			<channel id="currentState" typeId="currentStateChannel"/>
+			<channel id="mowTime" typeId="mowTimeChannel"/>
+			<channel id="chargeTime" typeId="chargeTimeChannel"/>
+			<channel id="operationTime" typeId="operationTimeChannel"/>
+			<channel id="currentDateTime" typeId="currentDateTimeChannel"/>
+			<channel id="mode" typeId="modeChannel" />
+			<channel id="expertMode" typeId="expertModeChannel" />
+			<channel id="latestUpdateTime" typeId="latestUpdateTimeChannel" />
+		</channels>
+	</channel-group-type>
+
+	<channel-group-type id="timerControls">
+		<label>Timers</label>
+		<channels>
+			<channel id="timerActiveMode" typeId="timerActiveChannel" />
+			<!-- Weekday Flags -->
+			<channel id="timerActiveWeekdays" typeId="timerActiveWeekdaysChannel" />
+			<channel id="timer1Start" typeId="timerChannel"/>
+			<channel id="timer1Stop" typeId="timerChannel"/>
+			<channel id="timer2Start" typeId="timerChannel"/>
+			<channel id="timer2Stop" typeId="timerChannel"/>
+			<channel id="weTimer1Start" typeId="timerChannel"/>
+			<channel id="weTimer1Stop" typeId="timerChannel"/>
+			<channel id="weTimer2Start" typeId="timerChannel"/>
+			<channel id="weTimer2Stop" typeId="timerChannel"/>
+		</channels>
+	</channel-group-type>
+	
+	<channel-group-type id="amDetails">
+		<label>Automower Details</label>
+		<channels>
+			<channel id="rectangleModeState" typeId="rectangleModeStateChannel" />
+			<channel id="rectangleModePercent" typeId="rectangleModePercentChannel" />
+			<channel id="rectangleModeReference" typeId="rectangleModeReferenceChannel" />
+			<channel id="batteryCapacityUsedMaH" typeId="batteryCapacityUsedMaHChannel" />
+			<channel id="batteryCurrentMa" typeId="batteryCurrentMaChannel" />
+			<channel id="batteryCapacityMaH" typeId="batteryCapacityMaHChannel" />
+			<channel id="batteryCapacitySearchStartMaH" typeId="batteryCapacitySearchStartMaHChannel" />
+			<channel id="batteryVoltage" typeId="batteryVoltageChannel" />
+			<channel id="batteryTemperature" typeId="batteryTemperatureChannel" />
+			<channel id="batteryTemperatureCharge" typeId="batteryTemperatureChargeChannel" />
+			<channel id="batteryLatestChargeMin" typeId="batteryLatestChargeMinChannel" />
+			<channel id="batteryNextTemperatureMeasurementSec" typeId="batteryNextTemperatureMeasurementSecChannel" />
+			<channel id="velocityMotor" typeId="velocityMotorChannel" />
+			<channel id="velocityLeft" typeId="velocityLeftChannel" />
+			<channel id="velocityRight" typeId="velocityRightChannel" />
+			<channel id="firmwareVersion" typeId="firmwareVersionChannel" />
+			<channel id="languageFileVersion" typeId="languageFileVersionChannel" />
+		</channels>
+	</channel-group-type>
+
+	<channel-type id="timerActiveChannel">
+		<item-type>Switch</item-type>
+		<label>Timer active</label>
+		<description>Timer Active/Inactive for AM</description>
+	</channel-type>
+	
+	<channel-type id="timerActiveWeekdaysChannel">
+		<item-type>Number</item-type>
+		<label>Timer days active</label>
+		<description>Timer of day Active/Inactive for AM (This is a bitmask)</description>
+	</channel-type>
+
+	<channel-type id="timerChannel">
+		<item-type>DateTime</item-type>
+		<label>Timer</label>
+		<description>Timer in hh:mm for AM</description>
+	</channel-type>
+	
+	<channel-type id="currentStateChannel">
+		<item-type>Number</item-type>
+		<label>AM State</label>
+		<description>Displays the current state of the AM</description> 
+		<state readOnly="true"/>
+	</channel-type>
+	
+	<channel-type id="mowTimeChannel">
+		<item-type>Number:Time</item-type>
+		<label>Mow Time</label>
+		<description>Displays the current mow time in [min] of the AM</description> 
+		<!--state readOnly="true" pattern="%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS" /-->
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	
+	<channel-type id="chargeTimeChannel">
+		<item-type>Number:Time</item-type>
+		<label>Charge Time</label>
+		<description>Displays the current charge time in [min] of the AM</description> 
+		<!--state readOnly="true" pattern="%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS" /-->
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	
+	<channel-type id="operationTimeChannel">
+		<item-type>Number:Time</item-type>
+		<label>Operational Time</label>
+		<description>Displays the total operations time in [h] of the AM</description> 
+		<!--state readOnly="true" pattern="%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS" /-->
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	
+	<channel-type id="currentDateTimeChannel">
+		<item-type>DateTime</item-type>
+		<label>Current Time</label>
+		<description>Displays the current Date and Time of the AM</description> 
+		<!--state readOnly="true" pattern="%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS" /-->
+		<state readOnly="true" />
+	</channel-type>
+
+	<channel-type id="modeChannel">
+		<item-type>Number</item-type>
+		<label>Set mode</label>
+		<description>Operation Mode for AM</description>
+		<state>
+			<options>
+				<option value="0">MAN</option>
+				<option value="1">AUTO</option>
+				<option value="3">HOME</option>
+				<option value="4">DEMO</option>
+			</options>
+		</state>
+	</channel-type>
+	
+	<channel-type id="latestUpdateTimeChannel">
+		<item-type>DateTime</item-type>
+		<label>Latest Update Time</label>
+		<description>Displays the latest update Time of the AM</description> 
+		<!--state readOnly="true" pattern="%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS" /-->
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+
+	<channel-type id="expertModeChannel">
+		<item-type>Switch</item-type>
+		<label>Expert mode</label>
+		<description>Is Expert Mode enabled for AM</description>
+		<state readOnly="true" />
+	</channel-type>
+
+<!-- details channels -->
+	<channel-type id="rectangleModeStateChannel">
+		<item-type>Switch</item-type>
+		<label>RectangleMode State</label>
+		<description>Displays rectangle mode state of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+	<channel-type id="rectangleModePercentChannel">
+		<item-type>Number:Dimensionless</item-type>
+		<label>RectangleMode Percent</label>
+		<description>Displays rectangle mode percent of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="rectangleModeReferenceChannel">
+		<item-type>String</item-type>
+		<label>RectangleMode Reference</label>
+		<description>Displays rectangle mode Reference of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+	<channel-type id="batteryCapacityUsedMaHChannel">
+		<item-type>Number:Energy</item-type>
+		<label>Battery capacity used</label>
+		<description>Displays battery capacity of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryCurrentMaChannel">
+		<item-type>Number:ElectricCurrent</item-type>
+		<label>Battery current Ma</label>
+		<description>Displays battery current Ma of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryCapacityMaHChannel">
+		<item-type>Number:Energy</item-type>
+		<label>Battery capacity MaH</label>
+		<description>Displays battery capacity MaH of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryCapacitySearchStartMaHChannel">
+		<item-type>Number:Energy</item-type>
+		<label>Battery capacity Search Start MaH</label>
+		<description>Displays battery capacity Search Start MaH of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryVoltageChannel">
+		<item-type>Number:ElectricPotential</item-type>
+		<label>Battery Voltage</label>
+		<description>Displays battery Voltage of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryTemperatureChannel">
+		<item-type>Number:Temperature</item-type>
+		<label>Battery Temperature</label>
+		<description>Displays battery Temperature of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryTemperatureChargeChannel">
+		<item-type>Number:Temperature</item-type>
+		<label>Battery Temperature Charge</label>
+		<description>Displays battery Temperature Charge of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryLatestChargeMinChannel">
+		<item-type>Number:Time</item-type>
+		<label>Battery Latest Charge</label>
+		<description>Displays battery latest Charge of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="batteryNextTemperatureMeasurementSecChannel">
+		<item-type>String</item-type>
+		<label>Battery Temperature Next Measurement</label>
+		<description>Displays battery next temperature Measurment in sec of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+	<channel-type id="velocityMotorChannel">
+		<item-type>Number:Frequency</item-type>
+		<label>Velocity Motor</label>
+		<description>Displays velocity of motor of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+	<channel-type id="velocityLeftChannel">
+		<item-type>Number:Speed</item-type>
+		<label>Velocity Left Wheel</label>
+		<description>Displays velocity of left wheel of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="velocityRightChannel">
+		<item-type>Number:Speed</item-type>
+		<label>Velocity Right Wheel</label>
+		<description>Displays velocity of right wheel of the AM</description> 
+		<state readOnly="true" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="firmwareVersionChannel">
+		<item-type>String</item-type>
+		<label>Firmware Version</label>
+		<description>Displays firmware version of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+	<channel-type id="languageFileVersionChannel">
+		<item-type>String</item-type>
+		<label>Language File Version</label>
+		<description>Displays language file version of the AM ?</description> 
+		<state readOnly="true" />
+	</channel-type>
+
+</thing:thing-descriptions>
