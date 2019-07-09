@@ -72,9 +72,8 @@ public class AmInformationConverter {
 
     public static Integer convertBatteryCurrentMessage(
             byte[] responseParameter) {
-        // TODO Check if OK on display
         return Integer
-                .valueOf(HexConverter.convertAsUnsignedBytes(responseParameter));
+                .valueOf(HexConverter.convertAsSignedBytes(responseParameter));
     }
 
     public static Integer convertBatteryCapacityMAH(byte[] responseParameter) {
