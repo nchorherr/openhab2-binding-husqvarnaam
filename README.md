@@ -64,15 +64,15 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
     <tr><td>batteryCapacityUsedMaH</td><td>details</td><td>Number:Energy</td><td>Displays battery capacity used [mAh] of the AM</td></tr>
     <tr><td>batteryCurrentMa</td><td>details</td><td>Number:ElectricCurrent</td><td>Displays battery current [mA] of the AM</td></tr>
     <tr><td>batteryCapacityMaH</td><td>details</td><td>Number:Energy</td><td>Displays battery capacity [mAh] of the AM</td></tr>
-    <tr><td>batteryCapacitySearchStartMaH</td><td>details</td><td>String</td><td>Displays battery capacity Search Start [mAh] of the AM</td></tr>
+    <tr><td>batteryCapacitySearchStartMaH</td><td>details</td><td>Number:Energy</td><td>Displays battery capacity Search Start [mAh] of the AM</td></tr>
     <tr><td>batteryVoltage</td><td>details</td><td>Number:ElectricPotential</td><td>Displays battery Voltage [V] of the AM</td></tr>
-    <tr><td>batteryTemperature</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature [°C]of the AM</td></tr>
-    <tr><td>batteryTemperatureCharge</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature Charge of the AM</td></tr>
+    <tr><td>batteryTemperature</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature [°C] of the AM</td></tr>
+    <tr><td>batteryTemperatureCharge</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature Charge [°C] of the AM</td></tr>
     <tr><td>batteryLatestChargeMin</td><td>details</td><td>Number:Time</td><td>Displays battery latest Charge [m] of the AM</td></tr>
     <tr><td>batteryNextTemperatureMeasurementSec</td><td>details</td><td>String</td><td>Displays battery next temperature [s] of the AM ?</td></tr>
-    <tr><td>velocityMotor</td><td>details</td><td>Number</td><td>Displays velocity of motor [?] of the AM ?</td></tr>
-    <tr><td>velocityLeft</td><td>details</td><td>Number:Speed</td><td>Displays velocity of left wheel [?] of the AM</td></tr>
-    <tr><td>velocityRight</td><td>details</td><td>Number:Speed</td><td>Displays velocity of right wheel [?] of the AM</td></tr>
+    <tr><td>velocityMotor</td><td>details</td><td>Number</td><td>Displays velocity of motor [rpm] of the AM ?</td></tr>
+    <tr><td>velocityLeft</td><td>details</td><td>Number:Speed</td><td>Displays velocity of left wheel [cm/s] of the AM</td></tr>
+    <tr><td>velocityRight</td><td>details</td><td>Number:Speed</td><td>Displays velocity of right wheel [cm/s] of the AM</td></tr>
     <tr><td>firmwareVersion</td><td>details</td><td>String</td><td>Displays firmware version of the AM ?</td></tr>
     <tr><td>languageFileVersion</td><td>details</td><td>String</td><td>Displays language file version of the AM ?</td></tr>
 </table>
