@@ -21,8 +21,10 @@ import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
+import org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory;
 import org.openhab.binding.husqvarnaam.HusqvarnaAmBindingConstants;
 import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Component;
 
 /**
  * The {@link AmHandlerFactory} is responsible for creating things and thing
@@ -32,6 +34,7 @@ import org.osgi.service.component.ComponentContext;
  * 
  * @author Nikolaus Chorherr - Initial contribution
  */
+@Component(configurationPid="binding.husqvarnaam",service=ThingHandlerFactory.class)
 public class AmHandlerFactory extends BaseThingHandlerFactory {
 
                      // HusqvarnaAmBindingConstants.SERIAL_AVR_THING_TYPE,

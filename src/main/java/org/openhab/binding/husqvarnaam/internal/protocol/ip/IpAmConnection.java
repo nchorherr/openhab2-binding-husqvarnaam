@@ -79,7 +79,7 @@ public class IpAmConnection extends StreamAmConnection {
                 new InetSocketAddress(receiverHost, receiverPort),
                 CONNECTION_TIMEOUT);
 
-        logger.debug("Connected to {}:{}", receiverHost, receiverPort);
+        logger.info("Connected to {}:{}", receiverHost, receiverPort);
     }
 
     @Override
