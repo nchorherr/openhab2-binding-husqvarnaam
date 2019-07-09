@@ -200,6 +200,8 @@ public abstract class AbstractAmHandler extends BaseThingHandler
                 // Details
                 connection.sendDetailsQuery();
             }
+            this.manageExpertMode();
+            this.manageLatestUpdateTime();
         }
     }
 
@@ -417,8 +419,6 @@ public abstract class AbstractAmHandler extends BaseThingHandler
                             event.getConnection().getConnectionName(),
                             HexConverter.toString(event.getData()));
             }
-            this.manageExpertMode();
-            this.manageLatestUpdateTime();
         } catch (AmConnectionException e) {
             logger.debug(
                     "Unknown response type from AM @{}. Response discarded: {} on exception {}",
@@ -753,7 +753,7 @@ public abstract class AbstractAmHandler extends BaseThingHandler
     }
 
     private void manageExpertMode() {
-        updateState(HusqvarnaAmBindingConstants.EXPERT_MODE,OnOffType.from(this.expertMode));
+        updateState(HusqvarnaAmBindingConstants.EXPERT_MODE_CHANNEL,OnOffType.from(this.expertMode));
     }
     
     private void manageLatestUpdateTime() {
