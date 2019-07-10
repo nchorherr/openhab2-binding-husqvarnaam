@@ -68,9 +68,9 @@ husqvarnaam:ipAm:am230 [ address="192.168.1.25", tcpPort="10001" ]
     <tr><td>batteryVoltage</td><td>details</td><td>Number:ElectricPotential</td><td>Displays battery Voltage [V] of the AM</td></tr>
     <tr><td>batteryTemperature</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature [°C] of the AM</td></tr>
     <tr><td>batteryTemperatureCharge</td><td>details</td><td>Number:Temperature</td><td>Displays battery Temperature Charge [°C] of the AM</td></tr>
-    <tr><td>batteryLatestChargeMin</td><td>details</td><td>Number:Time</td><td>Displays battery latest Charge [min] of the AM</td></tr>
+    <tr><td>batteryLatestChargeMin</td><td>details</td><td>Number:Time</td><td>Displays battery latest Charge time [min] of the AM</td></tr>
     <tr><td>batteryNextTemperatureMeasurementSec</td><td>details</td><td>String</td><td>Displays battery next temperature [s] of the AM ?</td></tr>
-    <tr><td>velocityMotor</td><td>details</td><td>Number</td><td>Displays velocity of motor [rpm] of the AM ?</td></tr>
+    <tr><td>velocityMotor</td><td>details</td><td>Number:Frequency</td><td>Displays velocity of motor [rpm] of the AM</td></tr>
     <tr><td>velocityLeft</td><td>details</td><td>Number:Speed</td><td>Displays velocity of left wheel [cm/s] of the AM</td></tr>
     <tr><td>velocityRight</td><td>details</td><td>Number:Speed</td><td>Displays velocity of right wheel [cm/s] of the AM</td></tr>
     <tr><td>firmwareVersion</td><td>details</td><td>String</td><td>Displays firmware version of the AM ?</td></tr>
