@@ -13,8 +13,8 @@
 
 		<channel-groups>
 			<channel-group typeId="displayInformationGroup" id="displayInformation" />
-			<channel-group typeId="timerControls" id="timer" />
-			<channel-group typeId="amDetails" id="details" />
+			<channel-group typeId="timerControlsGroup" id="timer" />
+			<channel-group typeId="amDetailsGroup" id="details" />
 		</channel-groups>
 
 		<representation-property>location</representation-property>  <!-- notwendig ???? -->
@@ -29,8 +29,8 @@
 
 		<channel-groups>
 			<channel-group typeId="displayInformationGroup" id="displayInformation" />
-			<channel-group typeId="timerControls" id="timer" />
-			<channel-group typeId="amDetails" id="details" />
+			<channel-group typeId="timerControlsGroup" id="timer" />
+			<channel-group typeId="amDetailsGroup" id="details" />
 		</channel-groups>
 
 		<representation-property>location</representation-property>  <!-- notwendig ???? -->

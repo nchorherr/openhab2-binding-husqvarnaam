@@ -2,8 +2,8 @@ package org.openhab.binding.husqvarnaam;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.ElectricCurrent;
-import javax.measure.quantity.Energy;
 import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -41,8 +41,8 @@ public class QuantitiesTest {
 	
 	@Test
 	public void testUnitsmWh() {
-// mWh
-        QuantityType<Energy> q=new QuantityType<Energy>(2000,HusqvarnaAmBindingUnitsOfMeasurement.MILLIWATT_PER_HOUR);
+// mAh
+        QuantityType<ElectricCharge> q=new QuantityType<ElectricCharge>(2000,HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR);
 		@SuppressWarnings("rawtypes")
 		QuantityType qNew=QuantityType.valueOf(q.toFullString());
 		assertEquals(q,qNew);

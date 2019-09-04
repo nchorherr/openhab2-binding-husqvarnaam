@@ -13,7 +13,7 @@
 package org.openhab.binding.husqvarnaam;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Energy;
+import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Speed;
 
@@ -34,13 +34,15 @@ import tec.uom.se.unit.Units;
 @NonNullByDefault
 public final class HusqvarnaAmBindingUnitsOfMeasurement {
 
-    public static Unit<Energy> MILLIWATT_PER_HOUR = MetricPrefix.MILLI(SmartHomeUnits.WATT_HOUR);
+    public static final String MILLIAMPERE_HOUR_UNIT = "mAh";
+    public static final String CENTIMETER_PER_SECOND_UNIT = "cm/s";
+    public static final String REVOLUTION_PER_MINUTE_UNIT = "rpm";
+    public static Unit<ElectricCharge> MILLIAMPERE_HOUR = new ProductUnit<ElectricCharge>(MetricPrefix.MILLI(Units.AMPERE).multiply(Units.HOUR));
     public static Unit<Speed> CENTIMETER_PER_SECOND = new ProductUnit<Speed>(MetricPrefix.CENTI(Units.METRE).divide(Units.SECOND));
     public static Unit<Frequency> REVOLUTION_PER_MINUTE = SmartHomeUnits.HERTZ.divide(60.);
-
     static {
-         SimpleUnitFormat.getInstance().label(MILLIWATT_PER_HOUR, "mWh");
-         SimpleUnitFormat.getInstance().label(CENTIMETER_PER_SECOND, "cm/s");
-         SimpleUnitFormat.getInstance().label(REVOLUTION_PER_MINUTE, "rpm");
+             SimpleUnitFormat.getInstance().label(MILLIAMPERE_HOUR, MILLIAMPERE_HOUR_UNIT);
+             SimpleUnitFormat.getInstance().label(CENTIMETER_PER_SECOND, CENTIMETER_PER_SECOND_UNIT);
+             SimpleUnitFormat.getInstance().label(REVOLUTION_PER_MINUTE, REVOLUTION_PER_MINUTE_UNIT);
     }
 }
