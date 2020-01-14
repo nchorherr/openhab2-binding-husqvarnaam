@@ -605,6 +605,13 @@ sitemap demo label="Husqvarna Menu"
 }
 ```
 
+## Installation
+
+1. Clone the github repository and build the plugin locally with apache maven
+
+maven clean install
+
+2. Copy the resulting Jarfile target/org.openhab.binding.husqvarnaam-<version>.jar to your openHAB installation (see openHAB documentation)
 
 ## References
 

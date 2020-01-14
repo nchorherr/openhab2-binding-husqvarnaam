@@ -37,9 +37,9 @@ public final class HusqvarnaAmBindingUnitsOfMeasurement {
     public static final String MILLIAMPERE_HOUR_UNIT = "mAh";
     public static final String CENTIMETER_PER_SECOND_UNIT = "cm/s";
     public static final String REVOLUTION_PER_MINUTE_UNIT = "rpm";
-    public static Unit<ElectricCharge> MILLIAMPERE_HOUR = new ProductUnit<ElectricCharge>(MetricPrefix.MILLI(Units.AMPERE).multiply(Units.HOUR));
-    public static Unit<Speed> CENTIMETER_PER_SECOND = new ProductUnit<Speed>(MetricPrefix.CENTI(Units.METRE).divide(Units.SECOND));
-    public static Unit<Frequency> REVOLUTION_PER_MINUTE = SmartHomeUnits.HERTZ.divide(60.);
+    public static final Unit<ElectricCharge> MILLIAMPERE_HOUR = new ProductUnit<ElectricCharge>(MetricPrefix.MILLI(Units.AMPERE).multiply(Units.HOUR));
+    public static final Unit<Speed> CENTIMETER_PER_SECOND = new ProductUnit<Speed>(MetricPrefix.CENTI(Units.METRE).divide(Units.SECOND));
+    public static final Unit<Frequency> REVOLUTION_PER_MINUTE = SmartHomeUnits.HERTZ.divide(60.);
     static {
              SimpleUnitFormat.getInstance().label(MILLIAMPERE_HOUR, MILLIAMPERE_HOUR_UNIT);
              SimpleUnitFormat.getInstance().label(CENTIMETER_PER_SECOND, CENTIMETER_PER_SECOND_UNIT);

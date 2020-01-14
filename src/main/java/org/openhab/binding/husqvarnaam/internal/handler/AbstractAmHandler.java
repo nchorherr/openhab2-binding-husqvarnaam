@@ -40,6 +40,7 @@ import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.husqvarnaam.HusqvarnaAmBindingConstants;
+import org.openhab.binding.husqvarnaam.HusqvarnaAmBindingUnitsOfMeasurement;
 import org.openhab.binding.husqvarnaam.internal.protocol.RequestResponseFactory;
 import org.openhab.binding.husqvarnaam.internal.protocol.Response;
 import org.openhab.binding.husqvarnaam.protocol.AmConnection;
@@ -573,8 +574,8 @@ public abstract class AbstractAmHandler extends BaseThingHandler
         updateState(HusqvarnaAmBindingConstants.BATTERY_CAPACITY_USED_CHANNEL,
                 new QuantityType<ElectricCharge>(
                         AmInformationConverter.convertBatteryCapacityMAH(
-//                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
-        response.getParameterValue()), SmartHomeUnits.COULOMB));
+                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
+//        response.getParameterValue()), SmartHomeUnits.COULOMB));
     }
 
     private void manageBatteryCurrentMa(AmResponse response) {
@@ -588,8 +589,8 @@ public abstract class AbstractAmHandler extends BaseThingHandler
         updateState(HusqvarnaAmBindingConstants.BATTERY_CAPACITY_MAH_CHANNEL,
                 new QuantityType<ElectricCharge>(
                         AmInformationConverter.convertBatteryCapacityMAH(
-//                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
-        response.getParameterValue()), SmartHomeUnits.COULOMB));
+                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
+//        response.getParameterValue()), SmartHomeUnits.COULOMB));
     }
 
     private void manageBatteryCapacitySearchStartMah(AmResponse response) {
@@ -597,8 +598,8 @@ public abstract class AbstractAmHandler extends BaseThingHandler
                 HusqvarnaAmBindingConstants.BATTERY_CAPACITY_SEARCH_START_MAH_CHANNEL,
                 new QuantityType<ElectricCharge>(
                         AmInformationConverter.convertBatteryCapacityMAH(
-//                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
-        response.getParameterValue()), SmartHomeUnits.COULOMB));
+                                response.getParameterValue()), HusqvarnaAmBindingUnitsOfMeasurement.MILLIAMPERE_HOUR));
+//        response.getParameterValue()), SmartHomeUnits.COULOMB));
     }
 
     private void manageBatteryVoltage(AmResponse response) {
@@ -646,22 +647,22 @@ public abstract class AbstractAmHandler extends BaseThingHandler
     private void manageVelocityMotor(AmResponse response) {
         updateState(HusqvarnaAmBindingConstants.VELOCITY_MOTOR_CHANNEL,
                 new QuantityType<Frequency>(AmInformationConverter
-//                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.REVOLUTION_PER_MINUTE));
-        .convertVelocity(response.getParameterValue()),SmartHomeUnits.HERTZ));
+                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.REVOLUTION_PER_MINUTE));
+//        .convertVelocity(response.getParameterValue()),SmartHomeUnits.HERTZ));
     }
 
     private void manageVelocityLeftWheel(AmResponse response) {
         updateState(HusqvarnaAmBindingConstants.VELOCITY_LEFT_CHANNEL,
                 new QuantityType<Speed>(AmInformationConverter
-//                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.CENTIMETER_PER_SECOND));
-        .convertVelocity(response.getParameterValue()),SmartHomeUnits.METRE_PER_SECOND));
+                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.CENTIMETER_PER_SECOND));
+//        .convertVelocity(response.getParameterValue()),SmartHomeUnits.METRE_PER_SECOND));
     }
 
     private void manageVelocityRightWheel(AmResponse response) {
         updateState(HusqvarnaAmBindingConstants.VELOCITY_RIGHT_CHANNEL,
                 new QuantityType<Speed>(AmInformationConverter
-//                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.CENTIMETER_PER_SECOND));
-        .convertVelocity(response.getParameterValue()),SmartHomeUnits.METRE_PER_SECOND));
+                        .convertVelocity(response.getParameterValue()),HusqvarnaAmBindingUnitsOfMeasurement.CENTIMETER_PER_SECOND));
+//        .convertVelocity(response.getParameterValue()),SmartHomeUnits.METRE_PER_SECOND));
     }
 
     private void manageBatteryTemperatureNextMeasurement(AmResponse response) {
