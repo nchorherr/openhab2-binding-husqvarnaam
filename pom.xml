@@ -10,7 +10,7 @@
 
   <groupId>org.openhab.addons.bundles</groupId>
   <artifactId>org.openhab.binding.husqvarnaam</artifactId>
-  <version>2.5.3-SNAPSHOT</version>
+  <version>2.5.3</version>
   <!-- do not delete the version here as it is required by the release process -->
   
   <name>openHAB Add-ons :: Bundles :: Husqvarna AM Binding</name>
@@ -27,7 +27,7 @@
 	<connection>scm:git:${scm.gitBaseUrl}/openhab2-binding-husqvarnaam.git</connection>
 	<developerConnection>scm:git:${scm.gitBaseUrl}/openhab2-binding-husqvarnaam.git</developerConnection>
 	<url>https://github.com/nchorherr/openhab2-binding-husqvarnaam</url>
-    <tag>HEAD</tag>
+    <tag>org.openhab.binding.husqvarnaam-2.5.3</tag>
   </scm>
  <!--
 	Copy of zwave pom
